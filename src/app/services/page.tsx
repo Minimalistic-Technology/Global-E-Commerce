@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
 import { 
   ChevronRight, 
   Package, 
@@ -53,7 +52,7 @@ const Services: React.FC = () => {
         "Custom specifications",
         "Fast delivery",
       ],
-      color: "bg-purple-500",
+      color: "bg-[#9b6cbc]",
     },
     {
       id: "agriculture",
@@ -76,7 +75,7 @@ const Services: React.FC = () => {
         "Traceability system",
         "Freshness guarantee",
       ],
-      color: "bg-green-500",
+      color: "bg-[#5eba79]",
     },
     {
       id: "medicine",
@@ -99,7 +98,7 @@ const Services: React.FC = () => {
         "Secure packaging",
         "Regulatory documentation",
       ],
-      color: "bg-red-500",
+      color: "bg-[#ed6163]",
     },
     {
       id: "electronics",
@@ -122,13 +121,13 @@ const Services: React.FC = () => {
         "Technical support",
         "Bulk pricing",
       ],
-      color: "bg-blue-500",
+      color: "bg-[#6589cb]",
     },
   ];
 
   const logisticsServices = [
     {
-      icon: <Package className="w-12 h-12 text-blue-600" />,
+      icon: <Package className="w-12 h-12 text-[#54BBBA]" />,
       title: "Packaging & Handling",
       description: "Professional packaging services tailored to your product requirements",
     },
@@ -152,16 +151,56 @@ const Services: React.FC = () => {
   const selectedCategoryData = serviceCategories.find((cat) => cat.id === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FBF8F1]">
     
       {/* Hero Section */}
       <section
-        className="bg-cover bg-center py-20"
+        className="bg-cover bg-center py-20 relative z-0 overflow-hidden"
         style={{
           backgroundImage: `url('https://media.gettyimages.com/id/1460822484/photo/warehouse-tablet-and-people-teamwork-for-storage-inventory-and-supply-chain-management-for.jpg?s=612x612&w=0&k=20&c=ADW05TJoWOGkNuLzzLlxwoVA5v4TzfVxDG4BsL5TP3I=')`,
         }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-opacity-50">
+        {/* Decorative SVG Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg className="absolute top-10 left-10 opacity-20" width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#54BBBA" strokeWidth="2" strokeDasharray="5,5">
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                values="0 50 50;360 50 50"
+                dur="20s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <circle cx="50" cy="50" r="20" fill="#54BBBA" opacity="0.3" />
+          </svg>
+          
+          <svg className="absolute top-20 right-20 opacity-30" width="80" height="80" viewBox="0 0 80 80">
+            <polygon points="40,10 60,30 40,50 20,30" fill="#9b6cbc" opacity="0.6">
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                values="0 40 40;360 40 40"
+                dur="15s"
+                repeatCount="indefinite"
+              />
+            </polygon>
+          </svg>
+          
+          <svg className="absolute bottom-10 left-1/4 opacity-25" width="120" height="120" viewBox="0 0 120 120">
+            <path d="M60,20 L80,40 L60,60 L40,40 Z" fill="none" stroke="#5eba79" strokeWidth="3" strokeDasharray="8,4">
+              <animateTransform
+                attributeName="transform"
+                type="scale"
+                values="1;1.2;1"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+            </path>
+          </svg>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-opacity-50 relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Our Services & Materials
           </h1>
@@ -172,10 +211,22 @@ const Services: React.FC = () => {
       </section>
 
       {/* Material Categories */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+      <section className="py-16 relative overflow-hidden">
+        {/* Decorative background shapes */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 right-10 w-32 h-32 bg-[#54BBBA] opacity-5 rounded-full transform rotate-45"></div>
+          <div className="absolute bottom-20 left-20 w-24 h-24 bg-[#9b6cbc] opacity-10 transform rotate-12"></div>
+          <svg className="absolute top-1/2 left-10 opacity-10" width="60" height="60" viewBox="0 0 60 60">
+            <rect x="10" y="10" width="40" height="40" fill="none" stroke="#5eba79" strokeWidth="2" transform="rotate(45 30 30)" />
+          </svg>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12 relative">
             Material Categories
+            <svg className="absolute -top-2 -right-8 opacity-20" width="40" height="40" viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="15" fill="none" stroke="#ed6163" strokeWidth="2" strokeDasharray="3,3" />
+            </svg>
           </h2>
           
           {/* Category Selector */}
@@ -198,11 +249,18 @@ const Services: React.FC = () => {
 
           {/* Selected Category Details */}
           {selectedCategoryData && (
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className={`${selectedCategoryData.color} p-6 text-white`}>
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden relative">
+              {/* Decorative corner elements */}
+              <svg className="absolute top-0 right-0 opacity-10" width="100" height="100" viewBox="0 0 100 100">
+                <path d="M100,0 L100,50 Q75,25 50,50 Q25,75 0,50 L0,0 Z" fill={selectedCategoryData.color.replace('bg-', '')} />
+              </svg>
+              
+              <div className={`${selectedCategoryData.color} p-6 text-white relative z-10`}>
                 <div className="flex items-center mb-4">
-                  {selectedCategoryData.icon}
-                  <h3 className="text-2xl font-bold ml-3">{selectedCategoryData.title}</h3>
+                  <div className="p-2 bg-white bg-opacity-20 rounded-lg mr-3">
+                    {selectedCategoryData.icon}
+                  </div>
+                  <h3 className="text-2xl font-bold">{selectedCategoryData.title}</h3>
                 </div>
                 <p className="text-lg opacity-90">{selectedCategoryData.description}</p>
               </div>
@@ -228,7 +286,7 @@ const Services: React.FC = () => {
                     <div className="space-y-3">
                       {selectedCategoryData.features.map((feature, index) => (
                         <div key={index} className="flex items-center p-3 bg-blue-50 rounded-lg">
-                          <ArrowRight className="w-5 h-5 text-blue-600 mr-3" />
+                          <ArrowRight className="w-5 h-5 text-[#54BBBA] mr-3" />
                           <span className="text-gray-700">{feature}</span>
                         </div>
                       ))}
@@ -245,28 +303,71 @@ const Services: React.FC = () => {
       </section>
 
       {/* Logistics Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+      <section className="py-16 bg-[#FBF8F1] relative overflow-hidden">
+        {/* Decorative background patterns */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg className="absolute top-10 left-1/4 opacity-5" width="200" height="200" viewBox="0 0 200 200">
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#54BBBA" strokeWidth="1"/>
+              </pattern>
+            </defs>
+            <rect width="200" height="200" fill="url(#grid)" />
+          </svg>
+          
+          <div className="absolute bottom-10 right-10 w-40 h-40 border-4 border-[#52a9ff87] border-opacity-10 rounded-full"></div>
+          <div className="absolute top-1/3 right-1/4 w-16 h-16 bg-[#ed6163] opacity-5 transform rotate-45"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12 relative">
             Comprehensive Logistics Services
+            <svg className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 opacity-30" width="100" height="20" viewBox="0 0 100 20">
+              <path d="M0,10 Q25,0 50,10 T100,10" fill="none" stroke="#54BBBA" strokeWidth="3" strokeDasharray="5,5" />
+            </svg>
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {logisticsServices.map((service, index) => (
-              <div key={index} className="text-center p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow">
-                <div className="flex justify-center mb-4">
-                  {service.icon}
+              <div key={index} className="text-center p-6 bg-white rounded-xl hover:shadow-lg transition-all duration-300 relative group overflow-hidden">
+                {/* Decorative hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex justify-center mb-4 relative">
+                    <div className="p-3 bg-gray-50 rounded-full group-hover:scale-110 transition-transform duration-300">
+                      {service.icon}
+                    </div>
+                    {/* Animated ring on hover */}
+                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-current rounded-full animate-pulse opacity-0 group-hover:opacity-30"></div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
      {/* CTA Section */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-16 bg-[#54BBBA] relative overflow-hidden">
+        {/* Decorative wave patterns */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg className="absolute top-0 left-0 w-full h-20 opacity-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,0 Z" fill="rgba(255,255,255,0.1)" />
+          </svg>
+          
+          <svg className="absolute bottom-0 right-0 w-full h-20 opacity-20 transform rotate-180" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,0 Z" fill="rgba(255,255,255,0.1)" />
+          </svg>
+          
+          {/* Floating geometric shapes */}
+          <div className="absolute top-10 left-10 w-8 h-8 border-2 border-white border-opacity-20 transform rotate-45 animate-pulse"></div>
+          <div className="absolute top-20 right-20 w-6 h-6 bg-white bg-opacity-10 rounded-full animate-bounce"></div>
+          <div className="absolute bottom-10 left-1/4 w-10 h-10 border-2 border-white border-opacity-30 rounded-full"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Start Trading?
           </h2>
@@ -274,10 +375,10 @@ const Services: React.FC = () => {
             Get in touch with our experts to discuss your specific material requirements and shipping needs
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+            <button className="bg-white text-[#54BBBA] px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-lg">
               Get Free Quote
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-[#54BBBA] transition-all duration-300 hover:scale-105">
               Contact Sales Team
             </button>
           </div>
@@ -290,7 +391,7 @@ const Services: React.FC = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center mb-4">
-                <Globe className="w-8 h-8 text-blue-400 mr-2" />
+                <Globe className="w-8 h-8 text-[#54BBBA] mr-2" />
                 <span className="text-xl font-bold">GlobalTrade</span>
               </div>
               <p className="text-gray-400">

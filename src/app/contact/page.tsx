@@ -52,7 +52,7 @@ export default function Contact() {
           <p className="text-gray-600 mb-6">Thank you for contacting us. We'll get back to you soon.</p>
           <button 
             onClick={() => setSubmitted(false)}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-[#54BBBA] text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Send Another Message
           </button>
@@ -62,7 +62,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-24 pb-12 px-3">
+    <div className="min-h-screen bg-[#FBF8F1]  to-[#FBF8F1] pt-24 pb-12 px-3">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-3">
           <h3 className="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h3>
@@ -131,7 +131,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-[#54BBBA] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#54BBBA] focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>

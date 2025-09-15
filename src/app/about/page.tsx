@@ -23,26 +23,7 @@ const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Globe className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">GlobalTrade</span>
-          </div>
-          <div className="hidden md:flex space-x-6">
-            <a href="/" className="text-gray-600 hover:text-blue-600">Home</a>
-            <a href="/services" className="text-gray-600 hover:text-blue-600">Services</a>
-            <a href="/about" className="text-blue-600 font-semibold">About</a>
-            <a href="/contact" className="text-gray-600 hover:text-blue-600">Contact</a>
-          </div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-            Get Quote
-          </button>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-[#FBF8F1]">
       {/* Hero */}
       <section
         className="bg-cover bg-center py-20"
@@ -74,19 +55,19 @@ const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl h-64 flex items-center justify-center">
-            <Globe className="w-32 h-32 text-blue-600 opacity-30" />
+            <Globe className="w-32 h-32 text-[#54BBBA] opacity-30" />
           </div>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-[#FBF8F1]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Impact</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
               <div key={i} className="bg-white rounded-lg p-6 text-center shadow-lg">
-                <div className="flex justify-center text-blue-600 mb-3">{stat.icon}</div>
+                <div className="flex justify-center text-[#54BBBA] mb-3">{stat.icon}</div>
                 <div className="text-2xl font-bold text-gray-800">{stat.value}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </div>
@@ -101,7 +82,7 @@ const AboutPage: React.FC = () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-12">Mission & Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-[#54BBBA] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-neutral-900 font-bold mb-2">Mission</h3>
@@ -126,14 +107,14 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Services */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-[#FBF8F1]">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Services</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, i) => (
               <div key={i} className="bg-white rounded-lg p-6 shadow-lg">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="text-blue-600">{service.icon}</div>
+                  <div className="text-[#54BBBA]">{service.icon}</div>
                   <h3 className="text-black font-semibold">{service.title}</h3>
                 </div>
                 <p className="text-neutral-900">{service.desc}</p>
@@ -150,7 +131,7 @@ const AboutPage: React.FC = () => {
       <footer className="bg-gray-800 text-white py-8">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Globe className="w-6 h-6 text-blue-400" />
+            <Globe className="w-6 h-6 text-[#54BBBA]" />
             <span className="text-lg font-bold">GlobalTrade</span>
           </div>
           <p className="text-gray-400 mb-4">Your trusted partner in international trade</p>

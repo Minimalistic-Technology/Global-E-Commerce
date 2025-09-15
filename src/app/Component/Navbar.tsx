@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { Menu, X, Globe, Ship, Truck, Plane, ArrowRight, CheckCircle, ShoppingCart } from "lucide-react";
+import { Menu, X, Globe, ShoppingCart, User } from "lucide-react";
 import { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useCart } from "../context/cartContext";
@@ -12,14 +12,22 @@ const Navbar: React.FC = () => {
   const {loggedIn,setLoggedIn} = useLocalStorage();
   const {cart}=useCart();
 
+  // Get user's name from localStorage
+  const userName = typeof window !== 'undefined' ? localStorage.getItem("userName") || localStorage.getItem("name") : null;
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("name");
+    setLoggedIn(false);
+  };
 
   return (
-
-    <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
+    <nav className="bg-[#FBF8F1] shadow-lg fixed w-full top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -68,10 +76,15 @@ const Navbar: React.FC = () => {
             
              {loggedIn ? (
             <>
+                <Link
+                  href="/profile"
+                  className="text-gray-700 hover:text-[#54BBBA] font-medium transition-colors flex items-center space-x-1"
+                >
+                  <User className="w-5 h-5" />
+                  <span>{userName ? ` ${userName}` : 'My Account'}</span>
+                </Link>
                 <button
-                  onClick={() => {
-                    localStorage.removeItem("email")
-                    setLoggedIn(false)}}
+                  onClick={handleLogout}
                   className="hover:text-[#54BBBA] text-black"
                 >
                   Logout
@@ -87,21 +100,23 @@ const Navbar: React.FC = () => {
           
             </>
           )}
+          
           <Link
-  href="/cart"
-  className="block px-3 py-2 text-gray-700 hover:text-[#54BBBA] font-medium"
->
-  <span className="relative inline-block">
-    <ShoppingCart className="h-6 w-6" />
-    {cart && cart.length > 0 && (
-      <sup className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
-        {cart.length}
-      </sup>
-    )}
-  </span>
-</Link>
+            href="/cart"
+            className="block px-3 py-2 text-gray-700 hover:text-[#54BBBA] font-medium"
+          >
+            <span className="relative inline-block">
+              <ShoppingCart className="h-6 w-6" />
+              {cart && cart.length > 0 && (
+                <sup className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+                  {cart.length}
+                </sup>
+              )}
+            </span>
+          </Link>
 
           </div>
+          
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
@@ -148,23 +163,41 @@ const Navbar: React.FC = () => {
                Shop
               </Link>
               <button
-              
-              className="w-full text-left bg-[#54BBBA] text-white px-3 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors mt-2">
+                className="w-full text-left bg-[#54BBBA] text-white px-3 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors mt-2">
                 Get Quote
               </button>
               
-               <Link
-                href="/login"
-                className="block px-3 py-2 text-gray-700 hover:text-[#54BBBA] font-medium"
-              >
-                Login
-              </Link>
+              {loggedIn ? (
+                <>
+                  <Link
+                    href="/profile"
+                    className="block px-3 py-2 text-gray-700 hover:text-[#54BBBA] font-medium"
+                  >
+                    <User className="h-5 w-5 inline mr-2" />
+                    {userName ? ` ${userName}` : 'My Account'}
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-left px-3 py-2 text-gray-700 hover:text-red-600 font-medium"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  href="/login"
+                  className="block px-3 py-2 text-gray-700 hover:text-[#54BBBA] font-medium"
+                >
+                  Login
+                </Link>
+              )}
+              
               <Link
-            href="/cart"
+                href="/cart"
                 className="block px-3 py-2 text-gray-700 hover:text-[#54BBBA] font-medium"
               >
-            <ShoppingCart className="h-6 w-6" />
-            </Link>
+                <ShoppingCart className="h-6 w-6" />
+              </Link>
             </div>
           </div>
         )}
